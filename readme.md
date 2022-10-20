@@ -1,8 +1,3 @@
-# Bodis Code Challenge
-
-Thanks for your interest in Bodis and for taking the time to work on our code challenge. We've provided a small Laravel application with an interface built using Vue. Your task is to implement functionality as outlined on the application's *code challenge* page. There are additional bonus items that you may choose to complete as well.
-
-![Screenshot](public/images/screenshot.png)
 
 ## Prerequisites
 
@@ -66,22 +61,7 @@ Load the application URL in your browser:
 http://localhost:8000
 ```
 
-## Get Started
-
-Once the application is loaded please visit the *code challange* page for the requirements. Searching the project source files for the phrase **"Code Challange"** will yield results relevant to each task excluding the bonus items.
-
-## How to Return
-
-Please email a zip file of the project to davey@bodis.com
-
-Exclude the following directories:
-
-* `/vendor`
-* `/node_modules`
-
-## Documentation Resources
-
-The following are links to documentation websites relevant to the code challange:
+The following are links to documentation websites :
 
 * [Laravel](https://laravel.com/docs/5.8)
 * [Vue](https://vuejs.org/v2/guide/)

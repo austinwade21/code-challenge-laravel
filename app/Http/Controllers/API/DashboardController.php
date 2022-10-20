@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Http\Controllers\Controller;
+use App\Models\Domain;
 
 class DashboardController extends Controller
 {
@@ -17,13 +18,13 @@ class DashboardController extends Controller
     {
         $stats = [
             // CODE CHALLENGE: Active Domains
-            'active' => 0,
+            'active' => Domain::all()->count(),
             // CODE CHALLENGE: Trashed Domains
-            'trash' => 0,
+            'trash' => Domain::onlyTrashed()->count(),
             // CODE CHALLENGE: Internationalized Domains
-            'internationalized' => 0,
+            'internationalized' => Domain::where('is_idn', '=', 1)->count(),
             // CODE CHALLENGE: Imprinted Domains
-            'imprinted' => 0
+            'imprinted' => Domain::where('is_imprinted', '=', 1)->count(),
         ];
         // Create HTTP response, 200 ok.
         $response = new Response($stats, Response::HTTP_OK);

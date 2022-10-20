@@ -11,4 +11,4 @@
 |
 */
 
-Route::get('/', 'Web\SpaController@render');
+Route::get('/{any_path?}', 'Web\SpaController@render')->where('any_path', '(.*)');

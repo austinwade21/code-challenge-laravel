@@ -23,6 +23,8 @@
 </template>
 
 <script>
+  import store from '../store';
+
   export default {
     data: () => ({
         items: [
@@ -33,6 +35,8 @@
     methods: {
         handleChange(value) {
             console.log('handle change', value);
+            store.commit('settings/setDarkMode', value);
+            this.$vuetify.theme.dark = value;
         }
     }
   }

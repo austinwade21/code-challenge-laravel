@@ -32,10 +32,10 @@
                                     <td>{{ item.is_idn ? 'Yes' : 'No' }}</td>
                                     <td>{{ item.is_imprinted ? 'Yes' : 'No' }}</td>
                                     <td>
-                                        <v-btn icon @click="handleImprint">
+                                        <v-btn icon @click="handleImprint(item.id)">
                                             <v-icon>mdi-fingerprint</v-icon>
                                         </v-btn>
-                                        <v-btn icon @click="handleDelete">
+                                        <v-btn icon @click="handleDelete(item.id)">
                                             <v-icon>mdi-delete</v-icon>
                                         </v-btn>
                                     </td>
@@ -95,12 +95,36 @@
             }
         },
         handleSearch(value) {
+            axios.get('/api/domains?filter=' + value).then((result) => {
+                console.log(result.data);
+                this.domains = result.data;
+            }).catch((reason) => {
+                console.log(reason);
+            }).finally(() => {
+                this.loading = false;
+            });
             console.log('handle the search!', value);
         },
-        handleDelete() {
+        handleDelete(id) {
+            axios.delete('/api/domains/' + id).then((result) => {
+                console.log(result.data);
+                this.fetchDomains();
+            }).catch((reason) => {
+                console.log(reason);
+            }).finally(() => {
+                this.loading = false;
+            });
             console.log('handle the delete!');
         },
-        handleImprint() {
+        handleImprint(id) {
+            axios.put('/api/domains/' + id).then((result) => {
+                console.log(result.data);
+                this.fetchDomains();
+            }).catch((reason) => {
+                console.log(reason);
+            }).finally(() => {
+                this.loading = false;
+            });
             console.log('handle the imprint!');
         },
     }

@@ -28,6 +28,8 @@
 </template>
 
 <script>
+import Axios from 'axios';
+
   export default {
     data () {
         return {
@@ -37,6 +39,15 @@
     },
     methods: {
         handleSave() {
+            this.loading = true;
+            Axios.post('/api/domains', { domains: this.domains }).then((result) => {
+                console.log(result.data);
+                this.$router.push('/domains');
+            }).catch((reason) => {
+                console.log(reason);
+            }).finally(() => {
+                this.loading = false;
+            });
             console.log('handle save!');
         }
     }
